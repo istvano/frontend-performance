@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Demo page for frontend performance monitoring</title>
+  <script type="text/javascript">
+        //window.performance = null; //-> emulate old browser :)
+        window.onerror = function() {
+            console.log("old on error");
+        };
+        _maq = []; _maq.push(["markStart", Date.now()],["trackErrors",'test.json']);
+  </script>
+  <script type="text/javascript" src="resources/prototype.js"></script>
+  <script type="text/javascript" src="js/monit.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+      //<![CDATA[
+      _maq = _maq || [];
+      //_maq.push(["usePost"]);
+      _maq.push(['setSiteId','']);
+      _maq.push(['setReportUrl','test.json']);
+      _maq.push(["addCustomVar","r","catalog"]);
+      Event.observe(window, 'load', function() { _maq.push(["onLoad",Date.now()]); }, false);
+      //]]>
+  </script>
+  <p>Page is loaded</p>
+</body>
+</html>
